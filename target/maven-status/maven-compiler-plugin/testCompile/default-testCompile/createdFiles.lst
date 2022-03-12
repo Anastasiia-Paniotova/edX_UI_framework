@@ -1,0 +1,7 @@
+edx\context\DashboardHeaderContext.class
+edx\page\DashboardHeader.class
+edx\test\BaseTest.class
+edx\configuration\ConfProperties.class
+edx\configuration\DataProperties.class
+edx\page\BasePage.class
+edx\test\DashboardHeaderTests.class
