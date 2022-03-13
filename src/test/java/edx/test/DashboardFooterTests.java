@@ -3,11 +3,10 @@ package edx.test;
 import edx.configuration.DataProperties;
 import edx.context.DashboardFooterContext;
 import edx.context.DashboardHeaderContext;
-import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -31,6 +30,13 @@ public class DashboardFooterTests extends BaseTest {
     }
 
     @Test
+    public void verifyHeadingFont(){
+        assertThat(DashboardFooterContext.getFontEdxHeading(), equalTo(DataProperties.getProperty("headingFont")));
+        assertThat(DashboardFooterContext.getFontLegalHeading(),equalTo(DataProperties.getProperty("headingFont")));
+        assertThat(DashboardFooterContext.getFontConnectHeading(),equalTo(DataProperties.getProperty("headingFont")));
+    }
+
+    @Test
     public void verifyEDXListElements(){
         assertThat(DashboardFooterContext.getEdxList(),equalTo(DashboardFooterContext.convertStringToArrayEdxList()));
     }
@@ -50,10 +56,20 @@ public class DashboardFooterTests extends BaseTest {
         Assert.assertTrue(DashboardFooterContext.isDisplayedFooterLogo());
     }
 
+    @Test
+    public void verifyThatSocialMediasHaveCorrectLinks(){
+        assertThat(DashboardFooterContext.getFacebookLink(), equalTo(DataProperties.getProperty("facebook")));
+        assertThat(DashboardFooterContext.getTwitterLink(), equalTo(DataProperties.getProperty("twitter")));
+        assertThat(DashboardFooterContext.getLinkedInLink(), equalTo(DataProperties.getProperty("linkedIn")));
+        assertThat(DashboardFooterContext.getInstagramLink(), equalTo(DataProperties.getProperty("instagram")));
+        assertThat(DashboardFooterContext.getRedditLink(), equalTo(DataProperties.getProperty("reddit")));
 
-    @AfterTest(alwaysRun = true)
-    public void openBasicPage(){
-        driver.get(DataProperties.getProperty("logoPage"));
     }
+
+
+//    @AfterTest(alwaysRun = true)
+//    public void openBasicPage(){
+//        driver.get(DataProperties.getProperty("logoPage"));
+//    }
 
 }

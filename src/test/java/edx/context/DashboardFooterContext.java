@@ -81,9 +81,7 @@ public class DashboardFooterContext {
     /**
      * methods to get colors for edX/Logo/Component heading
      */
-    public static String getColorEDX(){
-        return dashboardFooter.getColorEdx();
-    }
+    public static String getColorEDX(){ return dashboardFooter.getColorEdx(); }
 
     public static String getColorLegal(){
         return dashboardFooter.getColorLegal();
@@ -92,5 +90,27 @@ public class DashboardFooterContext {
     public static String getColorConnect(){
         return dashboardFooter.getColorConnect();
     }
+
+    /**
+     * methods to get font for edX/Logo/Component heading
+     */
+    public static String getFontEdxHeading(){ return dashboardFooter.getFontEdx(); }
+
+    public static String getFontLegalHeading(){ return dashboardFooter.getFontLegal(); }
+
+    public static String getFontConnectHeading(){ return dashboardFooter.getFontConnect(); }
+
+    /**
+     * methods to get links from social media
+     */
+    public static String getFacebookLink(){ return  dashboardFooter.getLinkFacebook(); }
+
+    public static String getTwitterLink() { return dashboardFooter.getLinkTwitter(); }
+
+    public static String getInstagramLink() { return dashboardFooter.getLinkInstagram(); }
+
+    public static String getLinkedInLink() { return dashboardFooter.getLinkLinkedIn(); }
+
+    public static String getRedditLink() { return dashboardFooter.getLinkReddit(); }
 
 }

@@ -71,6 +71,26 @@ public class DashboardFooter extends BasePage {
     private List<WebElement> connectList;
 
     /**
+     * search social media links
+     *
+     */
+    @FindBy(xpath = "//*[@title='Facebook']")
+    private WebElement facebookIcon;
+
+    @FindBy(xpath = "//*[@title='Twitter']")
+    private WebElement twitterIcon;
+
+    @FindBy(xpath = "//*[@title='LinkedIn']")
+    private WebElement linkedInIcon;
+
+    @FindBy(xpath = "//*[@title='Instagram']")
+    private WebElement instagramIcon;
+
+    @FindBy(xpath = "//*[@title='Reddit']")
+    private WebElement redditIcon;
+
+
+    /**
      * get text from Heading list elements
      */
     public ArrayList getHeadingList(){
@@ -124,17 +144,40 @@ public class DashboardFooter extends BasePage {
     /**
      * method to get colors for footer heading
      */
-    public String getColorEdx(){
-        return edXHeading.getCssValue("color");
-    }
+    public String getColorEdx(){ return edXHeading.getCssValue("color"); }
 
     public String getColorLegal(){
         return legalHeading.getCssValue("color");
     }
 
     public String getColorConnect(){
-        return connectHeading.getCssValue("color");
+        return legalHeading.getCssValue("color");
     }
+
+    /**
+     * methods to get font for footer heading
+     */
+    public String getFontEdx() { return edXHeading.getCssValue("font"); }
+
+    public String getFontLegal() { return legalHeading.getCssValue("font"); }
+
+    public String getFontConnect() { return legalHeading.getCssValue("font"); }
+
+    /**
+     * get links from social media
+     */
+    public String getLinkFacebook() { return facebookIcon.getAttribute("href"); }
+
+    public String getLinkTwitter() { return twitterIcon.getAttribute("href"); }
+
+    public String getLinkLinkedIn() { return linkedInIcon.getAttribute("href"); }
+
+    public String getLinkInstagram() {return instagramIcon.getAttribute("href"); }
+
+    public String getLinkReddit() {return redditIcon.getAttribute("href"); }
+
+
+
 
 
 
