@@ -14,7 +14,6 @@ public class DashboardHeaderContext {
     /**
      * login
      */
-
     public static void login(){
         dashboardHeader.inputLogin();
         dashboardHeader.inputPassword();

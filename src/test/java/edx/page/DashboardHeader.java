@@ -22,10 +22,10 @@ public class DashboardHeader extends BasePage{
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver,this);
     }
+
     /**
      * elements and methods for LOGIN
      */
-
     @FindBy(xpath = "//*[@id='emailOrUsername']")
     private WebElement username;
 
