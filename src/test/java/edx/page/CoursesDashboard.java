@@ -67,15 +67,33 @@ public class CoursesDashboard extends BasePage {
     private WebElement exploreNewCourseButton;
 
     /**
+     * search the title of selected course
+     */
+    @FindBy(xpath = "//*[@class='course-target-link']")
+    private WebElement courseTitle;
+
+    /**
      * search the View Course button
      */
     @FindBy(xpath = "//div[@class='continue-button']")
     private WebElement viewCourseButton;
 
     /**
+     * search the indo university
+     */
+    @FindBy(xpath = "//*[@class='info-university']")
+    private WebElement infoUniversity;
+
+    /**
+     * search the ID course
+     */
+    @FindBy(xpath = "//*[@class='info-course-id']")
+    private WebElement idCourse;
+
+    /**
      * search course's setting
      */
-    @FindBy(xpath = "//*[@class='action action-more']")
+    @FindBy(xpath = "//button[@class='action action-more']")
     private WebElement settings;
 
     /**
@@ -87,8 +105,14 @@ public class CoursesDashboard extends BasePage {
     /**
      * search unenroll button
      */
-    @FindBy(xpath = "//*[@class='submit-button']")
+    @FindBy(xpath = "//*[@name='submit']")
     private WebElement unenrollButton;
+
+    /**
+     * search reason to unnenroll
+     */
+    @FindBy(xpath = "//label[@class='option']")
+    private WebElement reasonUnnenroll;
 
     /**
      * search Submit reason button
@@ -115,6 +139,14 @@ public class CoursesDashboard extends BasePage {
 
     @FindBy(xpath = "//button[@id='track_selection_audit']")
     private WebElement continueButton;
+
+    //ToDo: should be in another class for Course Page
+    @FindBy(xpath = "//*[@class='d-block m-0 font-weight-bold course-title']")
+    private WebElement courseTitleLearningEdx;
+
+    @FindBy(xpath = "//*[@class='d-block small m-0']")
+    private WebElement infoAndIdLearningEdx;
+
 
     /**
      * get empty dashboard message
@@ -207,9 +239,31 @@ public class CoursesDashboard extends BasePage {
 
     public void clickOnUnenrollOption(){ unenrollButton.click(); }
 
+    public void selectTheUnnenrollReason(){ reasonUnnenroll.click();}
+
     public void clickOnSubmit(){ submitReason.click(); }
 
     public void clickOnClose(){ closeOption.click(); }
+
+    /**
+     * get text attributes of displayed course
+     */
+    public String getTitleOfCourse(){ return courseTitle.getText(); }
+
+    public String getInfoUniversity(){ return infoUniversity.getText(); }
+
+    public String getIDCourse(){ return idCourse.getText(); }
+
+    public void clickOnTheViewCourse() {viewCourseButton.click(); }
+
+    /**
+     * get title of course on the learnin edx
+     */
+    public String getTitleOfCourseLearninEdx(){ return courseTitleLearningEdx.getText(); }
+
+    public String getInfoAndIdLearningEdx() {return infoAndIdLearningEdx.getText(); }
+
+
 
 
 }

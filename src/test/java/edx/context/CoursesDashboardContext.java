@@ -1,6 +1,7 @@
 package edx.context;
 
 import edx.configuration.ConfProperties;
+import edx.configuration.DataProperties;
 import edx.page.CoursesDashboard;
 
 import static edx.test.BaseTest.driver;
@@ -67,14 +68,12 @@ public class CoursesDashboardContext {
     /**
      * method to unenroll from course
      */
-    public static void unenrollFromCourse(){
+    public static void unenrollFromCourse() throws InterruptedException {
+        Thread.sleep(5000);
         coursesDashboard.openSettings();
-        coursesDashboard.clickOnUnenroll();
-        coursesDashboard.clickOnUnenrollOption();
-        coursesDashboard.clickOnEnrollButton();
-        coursesDashboard.clickOnSubmit();
-        coursesDashboard.clickOnClose();
-        driver.navigate().refresh();
+//        coursesDashboard.clickOnUnenroll();
+//        coursesDashboard.clickOnUnenrollOption();
+//        driver.navigate().refresh();
     }
 
     /**
@@ -90,5 +89,36 @@ public class CoursesDashboardContext {
     public static Boolean isDisplayedDashboardWithCourse(){
         return coursesDashboard.isDisplayedDashboardWithCourse();
     }
+
+    /**
+     * methods to get text from displayed course
+     */
+    public static String getCourseTitle(){
+        return coursesDashboard.getTitleOfCourse();
+    }
+
+    public static String getInfoUniversity(){ return coursesDashboard.getInfoUniversity(); }
+
+    public static String getIdCourse(){ return coursesDashboard.getIDCourse(); }
+
+    /**
+     * methods to get text of corresponding course after navigation to the learning edx
+     */
+
+    public static String clickOnTheViewCourseAndCheckTheCourseTextAttributes() {
+        coursesDashboard.clickOnTheViewCourse();
+        return coursesDashboard.getTitleOfCourseLearninEdx();
+    }
+
+    public static String getInfoAndIdUniversityLearningEdx(){
+        if (driver.getCurrentUrl().equals(DataProperties.getProperty("logoPage"))) {
+            coursesDashboard.clickOnTheViewCourse();
+        }
+        return coursesDashboard.getInfoAndIdLearningEdx();
+    }
+
+
+
+
 
 }

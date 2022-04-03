@@ -17,18 +17,18 @@ public class CoursesDashboardTests extends BaseTest{
         DashboardHeaderContext.login();
     }
 
-    @Test
+    @Test(priority = 1)
     public static void verifyTheMessageForEmptyDashboard(){
         assertThat(CoursesDashboardContext.getEmptyDashboardMessage(),
                 equalTo(DataProperties.getProperty("emptyDashboardMessage")));
     }
 
-    @Test
+    @Test(priority = 2)
     public static void checkTheExploreCoursesButton(){
         Assert.assertTrue(CoursesDashboardContext.isEnabledExploreCourses());
     }
 
-    @Test(dependsOnMethods = "checkTheExploreCoursesButton")
+    @Test(priority = 3)
     public static void checkStyleForTheExploreCoursesButton(){
         assertThat(CoursesDashboardContext.getBackgroundExploreCoursesButton(),
                 equalToIgnoringWhiteSpace(DataProperties.getProperty("backgroundExploreCoursesButton")));
@@ -36,34 +36,41 @@ public class CoursesDashboardTests extends BaseTest{
                 equalToIgnoringWhiteSpace(DataProperties.getProperty("fontExploreCoursesButton")));
     }
 
-    @Test
+    @Test(priority = 4)
     public static void checkThatCoursesAdvertiseElementIsPresent(){
         Assert.assertTrue(CoursesDashboardContext.isDisplayedCourseAdvertise());
     }
 
-    @Test(dependsOnMethods = "checkThatCoursesAdvertiseElementIsPresent")
+    @Test(priority = 5)
     public static void checkAdvertiseMessage(){
         assertThat(CoursesDashboardContext.getAdvertiseMessage(),
                 equalToIgnoringWhiteSpace(DataProperties.getProperty("advertiseMessage")));
     }
 
-    @Test
+    @Test(priority = 6)
     public static void verifyThatExploreNewCoursesIsEnabled(){
         Assert.assertTrue(CoursesDashboardContext.isEnabledExploreNewCourses());
     }
 
-    @Test
+    @Test(priority = 7)
     public static void addNewCourseToTheEmptyDashboardAndVerifyThatTheCourseISDisplayed(){
         CoursesDashboardContext.addCourseToTheDashboard();
         CoursesDashboardContext.navigateToTheDashboardPage();
         Assert.assertTrue(CoursesDashboardContext.isDisplayedDashboardWithCourse());
     }
 
-    @Test
-    public static void unenrollFromCourse(){
-        CoursesDashboardContext.unenrollFromCourse();
-    }
+//    //(dependsOnMethods = "addNewCourseToTheEmptyDashboardAndVerifyThatTheCourseISDisplayed")
+//    @Test
+//    public static void verifyThatCorrespondingCourseIsOpened(){
+////        assertThat(CoursesDashboardContext.clickOnTheViewCourseAndCheckTheCourseTextAttributes(),
+////                equalTo(CoursesDashboardContext.getCourseTitle()));
+//
+//        System.out.println(CoursesDashboardContext.getInfoAndIdUniversityLearningEdx());
+//
+////        assertThat(CoursesDashboardContext.getInfoAndIdUniversityLearningEdx(),
+////                equalTo(CoursesDashboardContext.getIdCourse()));
 
+//    }
 
 
 }
